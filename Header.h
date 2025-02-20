@@ -5,6 +5,7 @@
 #include<tccore/method.h>
 #include<tccore/aom_prop.h>
 #include<fclasses/tc_string.h>
+#include<tccore/workspaceobject.h>
 
 
 // syntax for DLL code
