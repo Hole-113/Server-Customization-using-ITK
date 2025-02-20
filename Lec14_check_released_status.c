@@ -32,17 +32,22 @@ extern DLLAPI int check_release_status(METHOD_message_t* msg, va_list args)
 	
 	tag_t tsource_rev = NULLTAG;
 	char* cValue = NULL;
+	char* cName = NULL;
 	// pass argument (args) list out of 4 parameter i want to access tag_t type parameter
 	tsource_rev = va_arg(args, tag_t);
 
 	AOM_UIF_ask_value(tsource_rev, "release_status_list", &cValue);
+	WSOM_ask_name2(tsource_rev, &cName);
 	if (tc_strlen(cValue) > 0)
 	{
 		TC_write_syslog("\n\n Revise Success");
 	}
 	else
-	{
-		EMH_store_error(EMH_severity_error, PLM_error);
+	{ 
+		//EMH_store_error(EMH_severity_error, PLM_error);
+		
+		// Whenever we want to any msg or string from oue code to ue_error file that time we have to use this api 
+		EMH_store_error_s1(EMH_severity_error, PLM_error, cName); // %1$ ==> cName ki value pass kr rhe hai woh waha pe print ho jayegi
 		return PLM_error;
 	}
 	
@@ -55,6 +60,9 @@ extern DLLAPI int plm_execute_callbacks2(int* decision, va_list argc)
 	printf("\n\n DLL Registered Success");
 	TC_write_syslog("\n\n DLL Registered Success for Logout");
 	return 0;
+
 }
+
+
 
 
