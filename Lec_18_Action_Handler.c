@@ -94,10 +94,10 @@ extern DLLAPI int Assign_project(EPM_action_message_t msg)
 				POM_name_of_class(tClassID, &cClassName);
 				if (tc_strcmp(cClassName, "ItemRevision")==0)
 				{
-					PROJ_find(cProjectID, &tProject);
+					PROJ_find(cProjectID, &tProject); // We will get project tag
 					if (tProject != NULLTAG)
 					{
-						PROJ_assign_objects(1, &tProject, 1, &tTargetList[j]);
+						PROJ_assign_objects(1, &tProject, 1, &tTargetList[j]); // Assign project to item revision (Target Attachment)
 						printf("\n\n Project Assigned to object");
 					}
 				}
