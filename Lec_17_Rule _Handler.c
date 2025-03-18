@@ -1,7 +1,8 @@
 /*check number of Named Reference files on particulae type of dataset before initate the
 workflow on ItemRevision.*/
 // 1.Datatype must be pdf
-// 2.check count of namedref file must be 1
+// 2.Check count of named reference file must be 1
+// 3.If condition is not matched then display the custom error message 
 
 
 
@@ -52,6 +53,7 @@ extern DLLAPI int Handler_Practice_register_callbacks()
 extern DLLAPI int plm_execute_callbacks1(int* decision, va_list args)
 {
 	*decision = ALL_CUSTOMIZATIONS;
+	// Registers a rule handler for a given handler name
 	EPM_register_rule_handler("EPLM_chk_named_ref", "Custom Rule Handler", (EPM_rule_handler_t)chk_named_ref);
 	return iFail;
 }
