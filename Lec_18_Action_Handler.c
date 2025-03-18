@@ -1,3 +1,4 @@
+// Action Handler
 // Assign project to target business objects through workflow process
 
 
@@ -74,9 +75,11 @@ extern DLLAPI int Assign_project(EPM_action_message_t msg)
 		EPM_ask_attachments(tRootTask, EPM_target_attachment, &iTargetCount, &tTargetList);
 		if (iTargetCount > 0)
 		{
+			// 
 			iNo_Arguments = TC_number_of_arguments(msg.arguments);
 			for (int i = 0; i < iNo_Arguments; i++)
 			{
+				// It will argument pair means Argument Name & Value one by one
 				ITK_ask_argument_named_value(TC_next_argument(msg.arguments), &cArgName, &cArgValue);
 				if (tc_strcmp(cArgName, "project_id") == 0)
 				{
@@ -95,6 +98,7 @@ extern DLLAPI int Assign_project(EPM_action_message_t msg)
 					if (tProject != NULLTAG)
 					{
 						PROJ_assign_objects(1, &tProject, 1, &tTargetList[j]);
+						printf("\n\n Project Assigned to object");
 					}
 				}
 			}
