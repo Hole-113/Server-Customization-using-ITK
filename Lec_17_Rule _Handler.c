@@ -1,3 +1,13 @@
+/*check number of Named Reference files on particulae type of dataset before initate the
+workflow on ItemRevision.*/
+// 1.Datatype must be pdf
+// 2.check count of namedref file must be 1
+
+
+
+
+
+
 #include <stdio.h>
 #include <tcinit/tcinit.h>
 #include <tccore/custom.h>
