@@ -1,5 +1,6 @@
 // Assign 1
-// To fill the dataset typeon on the the IRMF property after attachment of dataset on Item Revision
+// To fill the dataset type on the the IRMF property after attachment of dataset on Item Revision
+
 
 
 
@@ -24,8 +25,8 @@ extern DLLAPI int plm_execute_callbacks1(int* decision, va_list argc)
 	// We are getting default method id tag from server
 	METHOD_find_method("IMAN_specification", "GRM_create", &method_id);
 
-	// We register our custom function with default method as a pre condition
-	// (METHOD_function_t)check_release_status ==> Typecasting in MEHTOD_function_t
+	// We register our custom function with default method as a post action
+	// (METHOD_function_t)IRMF_after_dataset_attach ==> Typecasting in MEHTOD_function_t
 	METHOD_add_action(method_id, METHOD_post_action_type, (METHOD_function_t)IRMF_after_dataset_attach, NULLTAG);
 
 	return 0;
@@ -43,13 +44,14 @@ extern DLLAPI int IRMF_after_dataset_attach(METHOD_message_t* msg, va_list args)
 	tag_t tRelation = NULLTAG;
 	tag_t* tSecObj = NULLTAG;
 
+	// How we can access same variable type from parameter list if they are more than one  ==> we can access with the sequence
 	tPrimary = va_arg(args, tag_t); //It will give 1st tag from the list
 	tSecondary = va_arg(args, tag_t); //It will give 2nd tag from the list
 
 	GRM_find_relation_type("IMAN_master_form_rev", &tRelation); //Retrieves the relation type for the given relation type name.
 	GRM_list_secondary_objects_only(tPrimary, tRelation, &iSecObj, &tSecObj);
 
-	WSOM_ask_object_type2(tSecondary, &cType); // from secondary tag(means dataset) we are finding type
+	WSOM_ask_object_type2(tSecondary, &cType); // from secondary tag(means dataset) we are finding type (pdf,text,word)
 
 	for (i = 0; i < iSecObj; i++)
 	{
@@ -62,8 +64,6 @@ extern DLLAPI int IRMF_after_dataset_attach(METHOD_message_t* msg, va_list args)
 	{
 		MEM_free(tSecObj);
 	}
-
-
 	return 0;
 }
 
