@@ -75,11 +75,11 @@ extern DLLAPI int Assign_project(EPM_action_message_t msg)
 		EPM_ask_attachments(tRootTask, EPM_target_attachment, &iTargetCount, &tTargetList);
 		if (iTargetCount > 0)
 		{
-			// 
+			// Get Total number of arguments
 			iNo_Arguments = TC_number_of_arguments(msg.arguments);
 			for (int i = 0; i < iNo_Arguments; i++)
 			{
-				// It will argument pair means Argument Name & Value one by one
+				// we will get argument pair means Argument Name & Value one by one
 				ITK_ask_argument_named_value(TC_next_argument(msg.arguments), &cArgName, &cArgValue);
 				if (tc_strcmp(cArgName, "project_id") == 0)
 				{
