@@ -21,8 +21,11 @@ extern DLLAPI int plm_execute_callbacks1(int* decision, va_list argc)
 	*decision = ALL_CUSTOMIZATIONS;
 	printf("\n\n DLL Registered Success");
 	TC_write_syslog("\n\n DLL Registered Success for Login");
-
+	
+	// METHOD_find_method(const char* type_name, const char* msg_name, METHOD_id_t* method_id)
 	METHOD_find_method("ItemRevision", "Item_copy_rev", &method_id);
+
+	// METHOD_add_pre_condition(method_id, your custom function name, TC_argument_list_t* user_args)
 	METHOD_add_pre_condition(method_id, (METHOD_function_t)check_release_status, NULLTAG);
 	return 0;
 }
