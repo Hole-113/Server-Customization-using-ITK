@@ -5,7 +5,7 @@
 
 extern DLLAPI int Custom_Exit_sep_register_callbacks()
 {
-	// After Login successfull Custom_Exit_sep dll will be registered
+	// After Login successfull Custom_Exit_sep dll will be registered and then plm_execute_callbacks1 function is execute
 	CUSTOM_register_exit("Custom_Exit_sep", "USER_init_module", (CUSTOM_EXIT_ftn_t)plm_execute_callbacks1);
 
 	CUSTOM_register_exit("Custom_Exit_sep", "USER_exit_module", (CUSTOM_EXIT_ftn_t)plm_execute_callbacks2);
