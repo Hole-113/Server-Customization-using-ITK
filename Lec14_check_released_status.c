@@ -67,5 +67,21 @@ extern DLLAPI int plm_execute_callbacks2(int* decision, va_list argc)
 }
 
 
+/**
+    Produces a new working revision based on the given existing revision.
+    
+    If item_rev_master_form is passed as NULL then new form is not created. And it will only be created while 
+    performing ITEM_perform_deepcopy. Hence if a post action requires to access Itemrevision Master form then
+    it should be attached to ITEM_deep_copy instead of ITEM_copy_rev.
+    
+    @param tag_t       source_rev
+    @param const char* rev_id
+    @param tag_t*      new_rev
+    @param tag_t       item_rev_master_form
+
+#define ITEM_copy_rev_msg               "ITEM_copy_rev" */
+
+
+
 
 
