@@ -4,7 +4,7 @@
 
 
 #include"Header.h"
-
+//  This is the entry point to the custom library. This function is executed after loading the custom library.
 extern DLLAPI int Custom_Exit_sep_register_callback()
 {
 	CUSTOM_register_exit("Custom_Exit_sep", "USER_init_module",(CUSTOM_EXIT_ftn_t)plm_execute_callbacks1);
