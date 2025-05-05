@@ -22,6 +22,7 @@ Stands for Dynamic-Link Library Export.
 It tells the compiler to export the symbol (function, variable, class) from a DLL so that other applications or modules can use it.
 */
 
+/* EMH_USER_error_base means 919000 it is also a macro*/
 #define PLM_error (EMH_USER_error_base +2)
 
 extern DLLAPI int Custom_Exit_sep_register_callbacks();
