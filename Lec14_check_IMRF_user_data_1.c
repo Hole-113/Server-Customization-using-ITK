@@ -18,6 +18,7 @@ extern DLLAPI int plm_execute_callback1(int* decision, va_list args)
 	return 0;
 }
 
+// Va_list means Variable Argument List we get this list from msg "ITEM_create_from_rev" 
 extern DLLAPI int check_userdata_prop(METHOD_message_t* msg, va_list args)
 {
 	tag_t tItem = NULLTAG;
@@ -27,6 +28,10 @@ extern DLLAPI int check_userdata_prop(METHOD_message_t* msg, va_list args)
 
 	int iSecObj = 0;
 	char* cValue = NULL;
+	
+	//tag_t tItem = msg->object_tag
+	//va_arg means variable argument
+	//va_arg(args,for which type)
 	tItem = va_arg(args, tag_t);
 	tItemrev = va_arg(args, tag_t);
 
