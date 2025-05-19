@@ -5,7 +5,20 @@ workflow on ItemRevision.*/
 // 3.If condition is not matched then display the custom error message 
 
 
+/* I have a workflow where in Do task user has to attach Excel report as Dataset.
+I want handler which can check whether Excel dataset is attached or not to ItemRevision.
+If user is trying to complete the task without adding a Report workflow should throw an error that the dataset is missing or not attached. 
 
+Good afternoon, use the Validate Task with the on Start EPM-check-target-attachments handler.
+For example, I check the availability of a PDF dataset in Validate Task:
+EPM-check-target-attachments
+-include_type = ItemRevision
+-include_related_type = PDF
+-relation = IMAN_specification  */
+
+/* While explaining this example say we have a default handler to check dataset EPM-check-target-attachments but in our case
+we have to check dataset as well as count of Named Reference file for this we don't have default handler 
+that's why we have to create custom handler*/
 
 
 
